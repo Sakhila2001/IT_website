@@ -1,0 +1,27 @@
+<?php
+namespace App\Http\Controllers;
+
+use App\Models\ServiceModel;
+use App\Models\TeamModel;
+use App\Models\BlogModel;
+
+class DashboardController extends Controller
+{
+    public function index()
+    {
+        $services = ServiceModel::where('is_publish', 'Publish')
+                    ->where('is_delete', 0)
+                    ->get();
+
+        $teams = TeamModel::where('is_delete', false)
+                ->where('is_publish', 'Publish')
+                ->orderBy('created_at', 'desc')
+                ->get();
+
+
+
+
+
+        return view('dashboard', compact('services', 'teams'));
+    }
+}
