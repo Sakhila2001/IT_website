@@ -12,7 +12,6 @@ return new class extends Migration {
             $table->increments('id');
             $table->string('title');
             $table->text('job_descriptions');
-            $table->text('job_details');
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->enum('is_publish', ['Publish', 'Draft'])->default('Draft');

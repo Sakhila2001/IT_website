@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->increments('id');
             $table->string('small_heading');
             $table->string('heading');
-            $table->string('heading_description');
+            $table->text('heading_description');
             $table->string('seo_image')->nullable();
             $table->string('seo_title');
             $table->text('seo_description');
