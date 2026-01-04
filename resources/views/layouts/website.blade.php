@@ -53,7 +53,10 @@
 
     <!-- Main Stylesheet -->
     <link rel="stylesheet" href="{{ asset('assets/website/css/style.css') }}">
-
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+  />
 
 @yield('style')
 
@@ -190,10 +193,148 @@
     z-index: 999;
 }
 
-/* Other pages ONLY */
 .inner-page .header-section {
     background-color: #113877;
 }
+
+/* Mobile header background */
+@media (max-width: 991.98px) {
+    .header-section.header-menu {
+        background-color: #113877 !important; /* Blue background */
+    }
+
+    /* Optional: make the dropdown menu match the blue */
+    .header-section.header-menu .navbar-collapse {
+        background-color: #113877; /* ensures menu area is blue when expanded */
+    }
+
+    /* Dropdown links on mobile */
+    .header-section.header-menu .navbar-nav .dropdown-menu {
+        background-color: #41a83e;
+    }
+
+    /* Dropdown link text color */
+    .header-section.header-menu .navbar-nav .dropdown-menu a {
+        color: white; /* readable on blue */
+    }
+}
+/* Minimized header for mobile */
+@media (max-width: 991.98px) {
+    .header-section.header-menu {
+        padding: 4px 0 !important;
+        background-color: #113877 !important;
+    }
+
+    .header-section .navbar {
+        min-height: 48px;
+        padding: 0;
+    }
+
+    .header-section .navbar-toggler {
+        padding: 4px;
+        margin: 0;
+    }
+}
+
+/* MOBILE: force logo resize */
+@media (max-width: 991.98px) {
+    .header-section .navbar-brand img,
+    .header-section .navbar-brand .logo {
+        max-height: 50px !important;
+        width: auto !important;
+    }
+}
+.header-section .navbar-brand img,
+    .header-section .navbar-brand .logo {
+        max-height: 60px !important;
+        width: auto !important;
+    }
+
+/* MOBILE ONLY */
+@media (max-width: 991.98px) {
+
+.mobile-service-item {
+    width: 100%;
+}
+
+.mobile-service-item > div {
+    padding: 10px 0;
+}
+
+/* Plus button */
+.service-toggle {
+    background: none;
+    border: none;
+    font-size: 22px;
+    font-weight: bold;
+    color: #ffffff;
+    line-height: 1;
+    padding: 0 8px;
+    cursor: pointer;
+}
+
+/* Dropdown hidden by default */
+.mobile-service-dropdown {
+    display: none;
+    list-style: none;
+    padding-left: 15px;
+    margin-top: 8px;
+}
+
+.mobile-service-dropdown li a {
+    display: block;
+    padding: 6px 0;
+    color: #ffffff;
+    font-size: 14px;
+}
+
+/* Active state */
+.mobile-service-dropdown.show {
+    display: block;
+}
+}
+/* VISIBILITY CONTROL */
+.desktop-only { display: block; }
+.mobile-only { display: none; }
+
+/* MOBILE ONLY */
+@media (max-width: 991.98px) {
+    .desktop-only { display: none !important; }
+    .mobile-only { display: block !important; }
+
+    .mobile-service-item {
+        width: 100%;
+    }
+
+    .service-toggle {
+        background: none;
+        border: none;
+        font-size: 22px;
+        font-weight: bold;
+        color: #ffffff;
+        cursor: pointer;
+        padding: 0 8px;
+    }
+
+    .mobile-service-dropdown {
+        display: none;
+        padding-left: 15px;
+        margin-top: 8px;
+        list-style: none;
+    }
+
+    .mobile-service-dropdown li a {
+        display: block;
+        padding: 6px 0;
+        color: #ffffff;
+        font-size: 14px;
+    }
+
+    .mobile-service-dropdown.show {
+        display: block;
+    }
+}
+
 
 
 </style>
@@ -266,37 +407,54 @@
 
 
 
-<li class="dropdown show-dropdown dropdown_btn">
-    <button
-        type="button"
-        aria-label="Navbar Dropdown Button"
-        class="dropdown-toggle dropdown-nav d-flex gap-1 align-items-center fs-ten"
-    >
-        <a class="dropdown-item fs-ten" href="{{ route('allservices') }}">
-            Services
-        </a>
-        <i class="ph-bold ph-caret-down hover-green"></i>
-    </button>
+                    <li class="dropdown show-dropdown dropdown_btn desktop-only">
+                        <button
+                            type="button"
+                            class="dropdown-toggle dropdown-nav d-flex gap-1 align-items-center fs-ten"
+                        >
+                            <a class="dropdown-item fs-ten" href="{{ route('allservices') }}">
+                                Services
+                            </a>
+                            <i class="ph-bold ph-caret-down hover-green"></i>
+                        </button>
 
-    <ul class="dropdown-menu drop_menu">
-        @if(isset($publishedServices) && $publishedServices->count())
-            @foreach($publishedServices as $service)
-                <li>
-                    <a class="dropdown-item fs-ten"
-                       href="{{ route('service.details', $service->slug) }}">
-                        {{ $service->title }}
-                    </a>
-                </li>
-            @endforeach
-        @else
-            <li>
-                <a class="dropdown-item fs-ten" href="#">
-                    No Services Available
-                </a>
-            </li>
-        @endif
-    </ul>
-</li>
+                        <ul class="dropdown-menu drop_menu">
+                            @foreach($publishedServices as $service)
+                                <li>
+                                    <a class="dropdown-item fs-ten"
+                                       href="{{ route('service.details', $service->slug) }}">
+                                        {{ $service->title }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+
+                    <li class="mobile-only mobile-service-item">
+                        <div class="d-flex justify-content-between align-items-center w-100">
+                            <a href="{{ route('allservices') }}" class="fs-ten">
+                                Services
+                            </a>
+
+                            <button
+                                type="button"
+                                class="service-toggle"
+                                aria-label="Toggle Services"
+                            >
+                                +
+                            </button>
+                        </div>
+
+                        <ul class="mobile-service-dropdown">
+                            @foreach($publishedServices as $service)
+                                <li>
+                                    <a href="{{ route('service.details', $service->slug) }}">
+                                        {{ $service->title }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
 
 
 
@@ -367,7 +525,7 @@
 
     <!-- Footer section start -->
 <section class="bg11-color footer_section">
-    <div class="pt-120 pb-120">
+    <div class="pt-8 pb-8">
         <div class="container">
             <div class="row g-6">
             <div class="col-12 col-xl-3">  <!-- Changed from col-xl-4 to col-xl-3 -->
@@ -687,6 +845,20 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener('resize', checkDevice); // run on resize
 });
 </script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".service-toggle").forEach(btn => {
+            btn.addEventListener("click", function () {
+                const dropdown = this.closest(".mobile-service-item")
+                    .querySelector(".mobile-service-dropdown");
+
+                dropdown.classList.toggle("show");
+                this.textContent = dropdown.classList.contains("show") ? "−" : "+";
+            });
+        });
+    });
+    </script>
+
 
   </body>
 

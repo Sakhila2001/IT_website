@@ -17,6 +17,47 @@
 
 @section('style')
 <style>
+
+.desc-section p,
+.desc-section h1,
+.desc-section h2,
+.desc-section h3,
+.desc-section h4,
+.desc-section h5,
+.desc-section h6,
+.desc-section li,
+.desc-section ul,
+.desc-section ol,
+.desc-section div,
+.desc-section b,
+.desc-section strong,
+.desc-section em,
+.desc-section i,
+.desc-section span {
+  color: #3871b6 !important;
+  font-size: 18px;
+    line-height: 130%;
+}
+.desc-section{
+  color: #3871b6 !important;
+  font-size: 18px;
+    line-height: 130%;
+}
+
+.desc-section ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-left: 0;
+  color: #3871b6;
+}
+
+.desc-section ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  margin-left: 0;
+  color: #3871b6;
+}
+
 .service-sidebar {
     background: #f9f9f9;
     border-radius: 8px;
@@ -108,6 +149,7 @@
         <div class="desc-section">
             {!! $service->description !!}
         </div>
+
 
 
     </div>

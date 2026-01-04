@@ -45,12 +45,7 @@
                                         placeholder="Title" value="{{ old('title') }}">
                                     @error('title')<small class="text-danger">{{ $message }}</small>@enderror
                                 </div>
-                                <div class="form-group">
-                                    <label>Job Code</label>
-                                    <input type="text" name="job_details" class="form-control @error('job_details') is-invalid @enderror"
-                                        value="{{ old('job_details') }}">
-                                    @error('job_details')<small class="text-danger-entry">{{ $message }}</small>@enderror
-                                </div>
+                               
                                 <div class="form-group">
                                     <label>Starting Date</label>
                                     <input type="date" name="start_date" class="form-control @error('start_date') is-invalid @enderror"
@@ -64,7 +59,7 @@
                                     @error('end_date')<small class="text-danger">{{ $message }}</small>@enderror
                                 </div>
                                 <div class="form-group">
-                                    <label>Description</label>
+                                    <label>Job Descripion</label>
                                     <textarea class="ckeditor @error('job_descriptions') is-invalid @enderror" name="job_descriptions">{{ old('job_descriptions') }}</textarea>
                                     @error('job_descriptions')<small class="text-danger">{{ $message }}</small>@enderror
                                 </div>

@@ -47,12 +47,7 @@
                                     @error('title')<small class="text-danger">{{ $message }}</small>@enderror
                                 </div>
 
-                                <div class="form-group">
-                                    <label>Job code</label>
-                                    <input type="text" name="job_details" class="form-control @error('job_details') is-invalid @enderror"
-                                        value="{{ old('job_details', $career->job_details) }}">
-                                    @error('job_details')<small class="text-danger">{{ $message }}</small>@enderror
-                                </div>
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -73,7 +68,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label>Description</label>
+                                    <label>Job Description</label>
                                     <textarea class="ckeditor @error('job_descriptions') is-invalid @enderror" name="job_descriptions">{{ old('job_descriptions', $career->job_descriptions) }}</textarea>
                                     @error('job_descriptions')<small class="text-danger">{{ $message }}</small>@enderror
                                 </div>

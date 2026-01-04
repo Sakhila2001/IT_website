@@ -223,7 +223,7 @@
     <!-- Hero section end -->
 
     <!-- service section start  -->
-    <section class="pt-120 pb-120" style="margin-bottom:80px; margin-top:80px;">
+    <section class="pt-120 pb-120" style="margin-top:80px;">
         <div class="container">
 
             <!-- Heading Row -->
@@ -256,44 +256,55 @@
 
             </div>
 
-            <!-- Services Grid -->
-            <div class="row g-4 mt-7 mt-lg-15">
-                @foreach ($services as $service)
-                    <div class="col-12 col-sm-6 col-xl-4" data-aos="fade-up" data-aos-duration="700">
-                        <a href="{{ route('service.details', $service->slug) }}" class="text-decoration-none h-100 d-block">
-                            <div class="service-card shadow-card" style="padding: 20px;">
+            <!-- Swiper Carousel -->
+           <!-- Swiper Carousel -->
+<div class="swiper service-swiper mt-7 mt-lg-15 pb-10">
+    <div class="swiper-wrapper">
+        @foreach ($services as $service)
+            <div class="swiper-slide d-flex justify-content-center">
+                <a href="{{ route('service.details', $service->slug) }}" class="text-decoration-none h-100 d-flex">
+                    <div class="service-card shadow-card d-flex flex-column justify-content-between"
+                         style="padding: 20px; height: 100%; max-width: 350px;">
 
-                                <!-- Image -->
-                                <div class="service-image">
-                                    <img
-                                        src="{{ !empty($service->image) ? asset('storage/' . $service->image) : asset('default-icon.png') }}"
-                                        alt="{{ $service->title }}"
-                                        loading="lazy"
-                                    >
-                                </div>
+                        <!-- Image -->
+                        <div class="service-image mb-3" style="text-align: center;">
+                            <img
+                                src="{{ !empty($service->image) ? asset('storage/' . $service->image) : asset('default-icon.png') }}"
+                                alt="{{ $service->title }}"
+                                loading="lazy"
+                                style="max-width: 100%; height: auto; object-fit: contain;"
+                            >
+                        </div>
 
-                                <!-- Content -->
-                                <div class="service-content text-center pt-3">
-                                    <h4 class="fs-five fw-semibold p8-color mb-3">{{ $service->title }}</h4>
+                        <!-- Content -->
+                        <div class="service-content text-center">
+                            <h4 class="fs-five fw-semibold p8-color mb-3">{{ $service->title }}</h4>
 
-                                    <p class="p4-color fs-ten service-desc">
-                                        {!! Str::limit(strip_tags($service->description), 100) !!}
-                                    </p>
+                            <p class="p4-color fs-ten service-desc">
+                                {!! Str::limit(strip_tags($service->description), 100) !!}
+                            </p>
 
-                                    @if(strlen(strip_tags($service->description)) > 100)
-                                        <span class="see-more">See more →</span>
-                                    @endif
-                                </div>
-
-                            </div>
-                        </a>
+                            @if(strlen(strip_tags($service->description)) > 100)
+                                <span class="see-more">See more →</span>
+                            @endif
+                        </div>
                     </div>
-                @endforeach
+                </a>
             </div>
+        @endforeach
+    </div>
+
+    <!-- Navigation Arrows -->
+    <div class="swiper-button-next" style="padding: 3px;"></div>
+    <div class="swiper-button-prev" style="padding: 3px;"></div>
+
+    <!-- Pagination Dots -->
+    <div class="swiper-pagination mt-4"></div>
+</div>
+
 
         </div>
     </section>
-
 
 
 
@@ -380,96 +391,7 @@
 </section>
 <!-- Choose us section End -->
 
- <!-- Portfolio section start -->
-{{-- <section class="pt-120 bg7-color">
-  <div class="container">
-    <div class="process_heading w-100 text-center" data-aos="fade-down" data-aos-duration="800">
-      <span class="fs-ten fw-semibold p2-color mb-2 text-center">
-        {{ optional($portfolioHeading)->small_heading ?? 'Our Portfolios' }}
-      </span>
-      <h2 class="fs-two fw-semibold p8-color mb-3 mb-lg-6">
-        {{ optional($portfolioHeading)->heading ?? 'Work & Project' }}
-      </h2>
-      <p class="fs-ten p4-color">
-        {{ optional($portfolioHeading)->heading_description ?? 'Build responsive, mobile-first projects on the web with the worlds most popular front-end component library.' }}
-      </p>
-    </div>
 
-    @if(!empty($portfolios) && $portfolios->count() > 0)
-      <div>
-        <ul data-aos="zoom-in" data-aos-duration="800" class="tabs d-flex justify-content-center flex-wrap gap-2 gap-md-3 p-2 mt-8 mt-lg-15 mb-4 md:mb-8">
-          <li data-tab-target="#all" class="active cursor-pointer p4-color border cus-border border-six rounded-pill px-3 px-md-6 py-2 py-md-3 tab">
-            All
-          </li>
-          @if(!empty($portfoliocategories) && $portfoliocategories->count() > 0)
-            @foreach ($portfoliocategories as $category)
-              <li
-                data-tab-target="#{{ Str::slug($category->name ?? 'uncategorized') }}"
-                class="cursor-pointer p4-color border cus-border border-six rounded-pill px-3 px-md-6 py-2 py-md-3 tab"
-              >
-                {{ $category->name ?? 'Uncategorized' }}
-              </li>
-            @endforeach
-          @endif
-        </ul>
-
-        <div class="tab-content position-relative">
-          <div id="all" data-tab-content class="active">
-            <div class="row g-3">
-              @foreach ($portfolios as $portfolio)
-                <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-duration="700">
-                  <div class="single_project position-relative z-1">
-                    <div>
-                      @if($portfolio->image)
-                        <img src="{{ asset('storage/' . $portfolio->image) }}" class="w-full" alt="{{ e($portfolio->title ?? 'Portfolio Item') }}" />
-                      @else
-                        <img src="{{ asset('images/placeholder.jpg') }}" class="w-full" alt="{{ e($portfolio->title ?? 'Portfolio Item') }}" />
-                      @endif
-                    </div>
-                    <div class="p-3 p-md-5 position-absolute bottom-0 bg6-color w-100 project-content z-2">
-                      <h4 class="p1-color fs-five mb-2 mb-md-4">{{ $portfolio->title ?? 'Untitled Project' }}</h4>
-                    </div>
-                  </div>
-                </div>
-              @endforeach
-            </div>
-          </div>
-
-          @if(!empty($portfoliocategories) && $portfoliocategories->count() > 0)
-            @foreach ($portfoliocategories as $category)
-              <div id="{{ Str::slug($category->name ?? 'uncategorized') }}" data-tab-content>
-                <div class="row g-3">
-                  @foreach ($portfolios->where('portfolio_category_id', $category->id) as $portfolio)
-                    <div class="col-sm-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-duration="700">
-                      <div class="single_project position-relative z-1">
-                        <div>
-                          @if($portfolio->image)
-                            <img src="{{ asset('storage/' . $portfolio->image) }}" class="w-full" alt="{{ e($portfolio->title ?? 'Portfolio Item') }}" />
-                          @else
-                            <img src="{{ asset('images/placeholder.jpg') }}" class="w-full" alt="{{ e($portfolio->title ?? 'Portfolio Item') }}" />
-                          @endif
-                        </div>
-                        <div class="p-3 p-md-5 position-absolute bottom-0 bg6-color w-100 project-content z-2">
-                          <h4 class="p1-color fs-five mb-2 mb-md-4">{{ $portfolio->title ?? 'Untitled Project' }}</h4>
-                          <span class="p9-color fs-seven">{{ $category->name ?? 'Uncategorized' }}</span>
-                        </div>
-                      </div>
-                    </div>
-                  @endforeach
-                </div>
-              </div>
-            @endforeach
-          @endif
-        </div>
-      </div>
-    @else
-      <div class="alert alert-info text-center mt-5">
-        No portfolio items available
-      </div>
-    @endif
-  </div>
-</section> --}}
-<!-- Portfolio section end -->
 
      <!-- Counter section start  -->
 
@@ -635,6 +557,37 @@
         }, 5000); // change image every 5 seconds
     });
     </script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
+<script>
+    const swiper = new Swiper(".service-swiper", {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true, // Enable infinite loop
+        autoplay: { // Auto-play settings
+            delay: 3000, // 3 seconds per slide
+            disableOnInteraction: false, // Continue autoplay even after user interaction
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        breakpoints: {
+            576: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 2,
+            },
+            992: {
+                slidesPerView: 3,
+            },
+        },
+    });
+</script>
 
 @endsection

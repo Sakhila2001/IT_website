@@ -12,9 +12,8 @@ class CareerModel extends Model
             'is_publish',
             'job_descriptions',
             'start_date', 'end_date',
-            'job_details',
-           'title', 
+           'title',
            'is_delete',
-              
-        ];  
+
+        ];
 }

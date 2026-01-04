@@ -41,6 +41,47 @@
 
 @section('style')
 <style>
+    .desc-section p,
+.desc-section h1,
+.desc-section h2,
+.desc-section h3,
+.desc-section h4,
+.desc-section h5,
+.desc-section h6,
+.desc-section li,
+.desc-section ul,
+.desc-section ol,
+.desc-section div,
+.desc-section b,
+.desc-section strong,
+.desc-section em,
+.desc-section i,
+.desc-section span {
+    color: rgba(var(--p4), 1) !important;
+    font-size: 18px;
+    line-height: 130%;
+}
+
+.desc-section {
+    color: rgba(var(--p4), 1) !important;
+    font-size: 18px;
+    line-height: 130%;
+    margin-top: 1.5rem; /* Add some spacing */
+}
+
+.desc-section ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-left: 0;
+    color: rgba(var(--p4), 1);
+}
+
+.desc-section ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-left: 0;
+    color: rgba(var(--p4), 1);
+}
 .image-container {
     position: relative;
     max-width: 100%;
@@ -124,9 +165,9 @@
         <h2 class="fs-two fw-semibold p8-color mb-3 mb-lg-6">
             {{ $teamsHeading->heading ?? 'Meet the Masterminds' }}
         </h2>
-        <p class="fs-ten p4-color">
-            {{ $teamsHeading->heading_description ?? 'Build responsive, mobile-first projects on the web with the world\'s most popular front-end component library.' }}
-        </p>
+        <div class="desc-section">
+            {!! $teamsHeading->heading_description ?? 'Build responsive, mobile-first projects on the web with the world\'s most popular front-end component library.' !!}
+        </div>
     </div>
 
     <div class="mt-8 mt-md-15">

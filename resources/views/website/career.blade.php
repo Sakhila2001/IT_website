@@ -213,13 +213,7 @@
 
             <div class="desc-section">
                 {!! $careerHeading->description ?? 'Build responsive, mobile-first projects on the web with the world\'s most popular front-end component library.' !!}
-                <p class="mt-3">
-                    Please email your resume to
-                    <a href="mailto:{{ $contact->email ?? '' }}">
-                        {{ $contact->email ?? '' }}
-                    </a>,
-                    including the Job Code in the subject line, e.g., <strong>Job Code: TT012</strong>.
-                </p>
+
             </div>
         </div>
     </div>
@@ -261,7 +255,7 @@
             <div class="accordion-body collapse" id="panel-body-{{ $loop->index }}" data-parent="#accordion">
                 <div class="desc-section text-black">
                     {!! $career->job_descriptions !!}
-                    <p class="red-text mb-0">{!! $career->job_details !!}</p>
+
                 </div>
             </div>
         </div>
