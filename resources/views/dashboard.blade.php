@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Testimonial List')
+@section('title', 'Dashboard')
 
 @section('content')
 
@@ -59,8 +59,8 @@
                     <div class="row ">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                             <div class="card-content">
-                                <h5 class="font-15">Blog Posts</h5>
-                                {{-- <h2 class="mb-3 font-18">{{ $blogs->count() }}</h2> --}}
+                                <h5 class="font-15">Career Posts</h5>
+                                <h2 class="mb-3 font-18">{{ $careers->count() }}</h2>
                                 <p class="mb-0"><span class="col-green">Published</span> Posts</p>
                             </div>
                         </div>
@@ -81,9 +81,9 @@
                     <div class="row ">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pr-0 pt-3">
                             <div class="card-content">
-                                <h5 class="font-15">Products</h5>
-                                {{-- <h2 class="mb-3 font-18">{{ $products->count() }}</h2> --}}
-                                <p class="mb-0"><span class="col-orange">Available</span> Products</p>
+                                <h5 class="font-15">Partners</h5>
+                                <h2 class="mb-3 font-18">{{ $partners->count() }}</h2>
+                                <p class="mb-0"><span class="col-orange">Available</span> Partners</p>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pl-0">
@@ -99,7 +99,7 @@
 </div>
 
 
-       
+
 
         </section>
 

@@ -93,11 +93,7 @@
                                 </a>
                             </li>
 
-<li class="{{ Request::is('admin/teams**') || Request::is('admin/teams_heading*') ? 'active' : '' }}">
-                                <a href="{{ route('backend.teams.index') }}" class="nav-link">
-                                <i data-feather="users"></i> <span>Our Teams</span>
-                                </a>
-                            </li>
+
 
 
 
