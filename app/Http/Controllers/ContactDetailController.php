@@ -77,7 +77,7 @@ class ContactDetailController extends Controller
             'seo_title' => 'nullable|string|max:255',
             'seo_description' => 'nullable|string',
             'seo_keywords' => 'sometimes|string',
-            'company_logo' => 'sometimes|image|mimes:jpeg,png,jpg,gif,webp|max:10048',
+            'company_logo' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:10048',
             'fav_image' => 'sometimes|image|mimes:jpeg,png,jpg,gif,webp|max:10048',
             'seo_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:10048',
             'banner_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
@@ -139,10 +139,17 @@ class ContactDetailController extends Controller
                     File::makeDirectory($logoPath, 0755, true);
                 }
 
-                $manager->read($logo->getRealPath())
-                    ->scale(700, 200)
-                    ->cover(700, 200)
-                    ->toWebp(75)
+                $image = $manager->read($logo->getRealPath());
+
+                // Resize ONLY if width is greater than 700px
+                if ($image->width() > 1200) {
+                    $image->resize(
+                        width: 1200,
+                        height: null,
+                    );
+                }
+
+                $image->toWebp(75)
                     ->save($logoPath . '/' . $logoName);
 
                 $contact->company_logo = 'companylogos/' . $logoName;

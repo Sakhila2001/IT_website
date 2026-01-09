@@ -1458,12 +1458,12 @@ span {
 .header-section.header-fixed {
     border-color: transparent;
     box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.3);
-    background-color: #113877;
+    background-color: #ffffff;
     position: fixed;
     top: 0;
 }
 .header-section.header-fixed a {
-    color: white;
+    color: #113877;
 }
 .header-section.header-fixed .dropdown-item i {
     color: white;

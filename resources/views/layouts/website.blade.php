@@ -69,39 +69,6 @@
     }
   }
 
-.product-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 0.75rem;
-}
-
-.product-list a {
-    display: block;
-    margin-bottom: 0.5rem;
-    text-decoration: none;
-}
-
-.product-list img {
-    width: 12px;
-    height: 12px;
-    flex-shrink: 0;
-}
-
-.footer_tag {
-    word-break: break-word;
-}
-
-.product-list-single {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.product-list-single .footer_tag {
-    word-break: break-word;
-    max-width: calc(100% - 20px);
-}
-
 /* #subscription-message {
     transition: all 0.3s ease;
 } */
@@ -172,13 +139,16 @@
 .ph-circle-notch.animate-spin {
     color: white;
 }
+.header-section.header-fixed .dropdown-item i {
+    color: #113877;
+}
 
 .header-section .navbar .navbar-nav .dropdown-menu, .header-section .navbar .navbar-nav .sub-menu {
     background-color: #37b147;
-   color: #000;
+   color: #ffffff !important;
 }
 .hover-green {
-    color: #ffffff; /* default color */
+    color: #113877; /* default color */
     transition: color 0.3s ease; /* smooth transition */
 }
 
@@ -194,18 +164,18 @@
 }
 
 .inner-page .header-section {
-    background-color: #113877;
+    background-color: #ffffff;
 }
 
 /* Mobile header background */
 @media (max-width: 991.98px) {
     .header-section.header-menu {
-        background-color: #113877 !important; /* Blue background */
+        background-color: #ffffff !important; /* Blue background */
     }
 
     /* Optional: make the dropdown menu match the blue */
     .header-section.header-menu .navbar-collapse {
-        background-color: #113877; /* ensures menu area is blue when expanded */
+        background-color: #ffffff; /* ensures menu area is blue when expanded */
     }
 
     /* Dropdown links on mobile */
@@ -215,14 +185,14 @@
 
     /* Dropdown link text color */
     .header-section.header-menu .navbar-nav .dropdown-menu a {
-        color: white; /* readable on blue */
+        color: #113877; /* readable on blue */
     }
 }
 /* Minimized header for mobile */
 @media (max-width: 991.98px) {
     .header-section.header-menu {
         padding: 4px 0 !important;
-        background-color: #113877 !important;
+        background-color: #ffffff !important;
     }
 
     .header-section .navbar {
@@ -233,6 +203,11 @@
     .header-section .navbar-toggler {
         padding: 4px;
         margin: 0;
+    }
+    .header-section .navbar .navbar-toggler span{
+        margin-left: 120px;
+        margin-top: -20px;
+
     }
 }
 
@@ -246,7 +221,7 @@
 }
 .header-section .navbar-brand img,
     .header-section .navbar-brand .logo {
-        max-height: 60px !important;
+        max-height: 50px !important;
         width: auto !important;
     }
 
@@ -267,7 +242,7 @@
     border: none;
     font-size: 22px;
     font-weight: bold;
-    color: #ffffff;
+    color: #113877;
     line-height: 1;
     padding: 0 8px;
     cursor: pointer;
@@ -284,7 +259,7 @@
 .mobile-service-dropdown li a {
     display: block;
     padding: 6px 0;
-    color: #ffffff;
+    color: #113877;
     font-size: 14px;
 }
 
@@ -311,7 +286,7 @@
         border: none;
         font-size: 22px;
         font-weight: bold;
-        color: #ffffff;
+        color: #113877;
         cursor: pointer;
         padding: 0 8px;
     }
@@ -326,7 +301,7 @@
     .mobile-service-dropdown li a {
         display: block;
         padding: 6px 0;
-        color: #ffffff;
+        color: #113877;
         font-size: 14px;
     }
 
@@ -335,6 +310,97 @@
     }
 }
 
+
+/* ================= HEADER LINK COLOR RULE ================= */
+
+@media (min-width: 992px) {
+    body.inner-page .header-section a {
+        color: #113877 !important;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .header-section a {
+        color: #113877 !important;
+    }
+}
+
+/* Optional: caret / icons consistency */
+@media (max-width: 991.98px) {
+    .header-section i {
+        color: #113877 !important;
+    }
+}
+
+
+/* ================= FOOTER LOGO VISIBILITY FIX ================= */
+
+.footer-logo-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #ffffff;   /* neutral contrast */
+    padding: 10px 14px;
+    border-radius: 8px;
+
+    /* subtle professional separation */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.footer-logo {
+    max-height: 80px;
+    width: auto;
+    object-fit: contain; /* preserves original ratio */
+}
+
+/* Mobile adjustment */
+@media (max-width: 576px) {
+    .footer-logo {
+        max-height: 65px;
+    }
+}
+/* ================= HOME PAGE DESKTOP LOGO VISIBILITY FIX ================= */
+
+/* Apply ONLY on home page & desktop */
+@media (min-width: 992px) {
+    body.home-page .home-logo-wrapper {
+        background-color: #ffffff;      /* contrast layer */
+        padding: 8px 14px;
+        border-radius: 8px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    body.home-page .home-logo {
+        max-height: 60px;
+        width: auto;
+        object-fit: contain; /* keep original ratio */
+    }
+}
+/* Desktop Services Dropdown - always white text */
+@media (min-width: 992px) {
+    /* Dropdown menu background (green) */
+    .header-section .navbar-nav .dropdown-menu.drop_menu {
+        background-color: #37b147 !important; /* keep green background */
+    }
+
+    /* Dropdown items text color */
+    .header-section .navbar-nav .dropdown-menu.drop_menu li a {
+        color: #ffffff !important; /* force white text */
+    }
+
+    /* Optional: hover effect */
+    .header-section .navbar-nav .dropdown-menu.drop_menu li a:hover {
+        color: #d1fae5 !important; /* light green on hover */
+        background-color: transparent; /* keep transparent hover bg */
+    }
+}
+/* Ensure dropdown caret is visible on fixed header */
+/* .header-section.header-menu .dropdown-toggle i.ph-caret-down {
+    color: #113877 !important;
+    font-size: 0.8rem;         }
+*/
 
 
 </style>
@@ -364,155 +430,97 @@
 
 
     <!-- header-section start -->
-    <header class="header-section header-menu w-100 pt-1 pt-lg-0 pb-3 pb-lg-0">
-      <div class="navbar_mainhead header-fixed w-100">
+ <!-- header-section start -->
+<header class="header-section header-menu w-100 pt-1 pt-lg-0 pb-3 pb-lg-0">
+    <div class="navbar_mainhead header-fixed w-100">
         <div class="container">
-          <div class="row align-items-center">
-            <div class="col-12">
-              <nav
-                class="navbar navbar-expand-lg position-relative d-flex align-items-center"
-              >
-                <div>
-                  <a
-                    href="{{ route(name: 'index') }}"
-                    class="navbar-brand d-none d-sm-flex align-items-center gap-2"
-                  >
-                  @if(isset($contact) && $contact->company_logo)
-                <img src="{{ asset('storage/' . $contact->company_logo) }}" class="logo" alt="Company Logo" style="max-height: 60px; width: auto;" >
-            @else
-                <img src="{{ asset('assets/website/images/logo.png') }}" class="logo" alt="Fallback Logo">
-            @endif
-        </a>
-                  <a
-                    href="{{ route(name: 'index') }}"
-                    class="navbar-brand d-sm-none d-flex align-items-center gap-2"
-                  >
-                  @if(isset($contact) && $contact->company_logo)
-                <img src="{{ asset('storage/' . $contact->company_logo) }}" class="logo" alt="Company Logo"  style="max-height: 60px; width: auto;" >
-            @else
-                <img src="{{ asset('assets/website/images/fav.png') }}" class="logo" alt="Fallback Logo">
-            @endif
-        </a>
-                </div>
-                <div class="collapse navbar-collapse" id="navbar-content">
-                  <ul
-                    class="navbar-nav d-flex align-items-lg-center gap-5 gap-lg-1 gap-xl-4 gap-xxl-5 py-2 py-lg-0 ms-2 ms-xl-10 ms-xxl-20 ps-0 ps-xxl-10 align-self-center"
-                  >
-                    <li class="dropdown">
-                      <a href="{{ route(name: 'index') }}" class="fs-ten">Home</a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="{{ route('aboutUs') }}" class="fs-ten">About</a>
-                    </li>
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-lg position-relative d-flex align-items-center">
 
-
-
-                    <li class="dropdown show-dropdown dropdown_btn desktop-only">
-                        <button
-                            type="button"
-                            class="dropdown-toggle dropdown-nav d-flex gap-1 align-items-center fs-ten"
-                        >
-                            <a class="dropdown-item fs-ten" href="{{ route('allservices') }}">
-                                Services
+                        <!-- LOGO -->
+                        <div>
+                            <!-- Desktop logo -->
+                            <a href="{{ route('index') }}" class="navbar-brand d-none d-sm-flex align-items-center gap-2 home-logo-wrapper">
+                                @if(isset($contact) && $contact->company_logo)
+                                    <img src="{{ asset('storage/' . $contact->company_logo) }}" class="logo home-logo" alt="Company Logo">
+                                @else
+                                    <img src="{{ asset('assets/website/images/logo.png') }}" class="logo home-logo" alt="Fallback Logo">
+                                @endif
                             </a>
-                            <i class="ph-bold ph-caret-down hover-green"></i>
-                        </button>
 
-                        <ul class="dropdown-menu drop_menu">
-                            @foreach($publishedServices as $service)
-                                <li>
-                                    <a class="dropdown-item fs-ten"
-                                       href="{{ route('service.details', $service->slug) }}">
-                                        {{ $service->title }}
+                            <!-- Mobile logo -->
+                            <a href="{{ route('index') }}" class="navbar-brand d-sm-none d-flex align-items-center gap-2">
+                                @if(isset($contact) && $contact->company_logo)
+                                    <img src="{{ asset('storage/' . $contact->company_logo) }}" class="logo" alt="Company Logo">
+                                @else
+                                    <img src="{{ asset('assets/website/images/fav.png') }}" class="logo" alt="Fallback Logo">
+                                @endif
+                            </a>
+                        </div>
+
+                        <!-- NAVIGATION -->
+                        <div class="collapse navbar-collapse" id="navbar-content">
+                            <ul class="navbar-nav d-flex align-items-lg-center gap-5 gap-lg-1 gap-xl-4 gap-xxl-5 py-2 py-lg-0 ms-2 ms-xl-10 ms-xxl-20 ps-0 ps-xxl-10 align-self-center">
+
+                                <li class="dropdown"><a href="{{ route('index') }}" class="fs-ten">Home</a></li>
+                                <li class="dropdown"><a href="{{ route('aboutUs') }}" class="fs-ten">About</a></li>
+
+                                <!-- Desktop Services dropdown -->
+                                <li class="dropdown show-dropdown dropdown_btn desktop-only">
+                                    <a href="{{ route('allservices') }}" class="dropdown-toggle dropdown-nav dropdown-item d-flex gap-1 align-items-center fs-ten">
+                                        Services <i class="ph-bold ph-caret-down"></i>
                                     </a>
+                                    <ul class="dropdown-menu drop_menu">
+                                        @foreach($publishedServices as $service)
+                                            <li>
+                                                <a class="dropdown-item fs-ten service-dropdown"  href="{{ route('service.details', $service->slug) }}">
+                                                    {{ $service->title }}
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
                                 </li>
-                            @endforeach
-                        </ul>
-                    </li>
 
-                    <li class="mobile-only mobile-service-item">
-                        <div class="d-flex justify-content-between align-items-center w-100">
-                            <a href="{{ route('allservices') }}" class="fs-ten">
-                                Services
+                                <!-- Mobile Services dropdown -->
+                                <li class="mobile-only mobile-service-item">
+                                    <div class="d-flex justify-content-between align-items-center w-100">
+                                        <a href="{{ route('allservices') }}" class="fs-ten">Services</a>
+                                        <button type="button" class="service-toggle" aria-label="Toggle Services">+</button>
+                                    </div>
+                                    <ul class="mobile-service-dropdown">
+                                        @foreach($publishedServices as $service)
+                                            <li>
+                                                <a href="{{ route('service.details', $service->slug) }}">{{ $service->title }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown show-dropdown"><a href="{{ route('allportfolio') }}" class="fs-ten">Gallery</a></li>
+                                <li class="dropdown show-dropdown"><a href="{{ route('allcareer') }}" class="fs-ten">Career</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- CONTACT BUTTON + TOGGLER -->
+                        <div class="right-area custom-pos position-relative d-flex gap-0 gap-xl-5 align-items-center">
+                            <a href="{{ route('contact') }}" class="btn p6-color d-none d-xl-block">
+                                <span class="btn-text-one">Contact Us</span>
+                                <span class="btn-text-two">Contact Us</span>
                             </a>
 
-                            <button
-                                type="button"
-                                class="service-toggle"
-                                aria-label="Toggle Services"
-                            >
-                                +
+                            <button class="navbar-toggler mt-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-expanded="false" aria-label="Navbar Toggler" id="nav-icon3">
+                                <span></span><span></span><span></span><span></span>
                             </button>
                         </div>
 
-                        <ul class="mobile-service-dropdown">
-                            @foreach($publishedServices as $service)
-                                <li>
-                                    <a href="{{ route('service.details', $service->slug) }}">
-                                        {{ $service->title }}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </li>
-
-
-
-                     <li class="dropdown show-dropdown">
-                      <a href="{{ route('allteam') }}" class="fs-ten"
-                        >Our Teams</a
-                      >
-                    </li>
-                    <li class="dropdown show-dropdown">
-                        <a href="{{ route('allportfolio') }}" class="fs-ten"
-                          >Gallery</a
-                        >
-                      </li>
-
-                    <li class="dropdown show-dropdown">
-                      <a href="{{ route('allcareer') }}" class="fs-ten"
-                        >Career</a
-                      >
-                    </li>
-
-
-
-
-                  </ul>
+                    </nav>
                 </div>
-                <div>
-                  <div
-                    class="right-area custom-pos position-relative d-flex gap-0 gap-xl-5 align-items-center"
-                  >
-
-
-                    </a>
-                    <a
-                      href="{{ route('contact') }}"
-                      class="btn p6-color d-none d-xl-block"
-                    >
-                      <span class="btn-text-one">Contact Us</span>
-                      <span class="btn-text-two">Contact Us</span>
-                    </a>
-                  </div>
-                  <button
-                    class="navbar-toggler mt-1"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    aria-label="Navbar Toggler"
-                    data-bs-target="#navbar-content"
-                    aria-expanded="true"
-                    id="nav-icon3"
-                  >
-                    <span></span><span></span><span></span><span></span>
-                  </button>
-                </div>
-              </nav>
             </div>
-          </div>
         </div>
-      </div>
-    </header>
+    </div>
+</header>
+<!-- header-section end -->
 
 
 
@@ -530,11 +538,22 @@
             <div class="row g-6">
             <div class="col-12 col-xl-3">  <!-- Changed from col-xl-4 to col-xl-3 -->
             <div class="mb-3 mb-lg-4">  <!-- Reduced mb-lg-6 to mb-lg-4 -->
-                        @if($contact->company_logo)
-                            <img src="{{ asset('storage/' . $contact->company_logo) }}" alt="logo" style="max-height: 80px; width: auto;" />
-                        @else
-                            <img src="{{ asset('assets/website/images/logo.png') }}" alt="logo" />
-                        @endif
+                <div class="footer-logo-wrapper">
+                    @if($contact->company_logo)
+                        <img
+                            src="{{ asset('storage/' . $contact->company_logo) }}"
+                            alt="Company Logo"
+                            class="footer-logo"
+                        />
+                    @else
+                        <img
+                            src="{{ asset('assets/website/images/logo.png') }}"
+                            alt="Company Logo"
+                            class="footer-logo"
+                        />
+                    @endif
+                </div>
+
                     </div>
                     <p class="p6-color fs-ten">
                         {{ $contact->company_description ?? 'We have 14+ years experience. Helping you overcome technology challenges. Join the thriving technox it solution agency.' }}
