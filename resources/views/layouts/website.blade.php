@@ -139,6 +139,9 @@
 .ph-circle-notch.animate-spin {
     color: white;
 }
+.header-section.header-fixed .dropdown-item i {
+    color: #113877;
+}
 
 .header-section .navbar .navbar-nav .dropdown-menu, .header-section .navbar .navbar-nav .sub-menu {
     background-color: #37b147;
