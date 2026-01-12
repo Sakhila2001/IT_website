@@ -63,6 +63,7 @@
 <style>
  /* Add to your CSS file */
 
+
  @media (max-width: 767.98px) {
     .mobile-center-button {
       justify-content: center;
@@ -205,7 +206,7 @@
         margin: 0;
     }
     .header-section .navbar .navbar-toggler span{
-        margin-left: 120px;
+        margin-left: 90px;
         margin-top: -20px;
 
     }
@@ -395,6 +396,7 @@
         color: #d1fae5 !important; /* light green on hover */
         background-color: transparent; /* keep transparent hover bg */
     }
+
 }
 /* Ensure dropdown caret is visible on fixed header */
 /* .header-section.header-menu .dropdown-toggle i.ph-caret-down {
@@ -510,8 +512,12 @@
                             </a>
 
                             <button class="navbar-toggler mt-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-expanded="false" aria-label="Navbar Toggler" id="nav-icon3">
-                                <span></span><span></span><span></span><span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
                             </button>
+
                         </div>
 
                     </nav>
